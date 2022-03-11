@@ -98,7 +98,7 @@ const Layout: FC<Props> = ({
         </div>
         <nav
           className={classNames(
-            `bg-dark-gray bg-opacity-95 z-10 items-center justify-center text-center fixed inset-0 gap-6 font-semibold text-light-gray font-display text-2xl uppercase transition-all duration-300`,
+            `bg-dark-gray bg-opacity-95 z-10 items-center justify-center text-center fixed inset-0 gap-6 font-medium text-light-gray font-display text-3xl lg:text-xl uppercase transition-all duration-300`,
             `lg:pt-0 lg:bg-transparent lg:relative lg:text-lg lg:flex lg:text-medium-gray`,
             mobileNavOpen
               ? `flex flex-col h-full pt-8 opacity-100`
@@ -106,31 +106,31 @@ const Layout: FC<Props> = ({
           )}
         >
           <a
-            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Work
           </a>
           <a
-            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Case Studies
           </a>
           <a
-            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             What We Do
           </a>
           <a
-            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Who We Are
           </a>
           <a
-            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Contact
