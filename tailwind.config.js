@@ -24,5 +24,8 @@ module.exports = {
       sans: ["Montserrat", ...defaultTheme.fontFamily.sans],
     },
   },
-  plugins: [],
+  plugins: [
+    require("@tailwindcss/forms"),
+    require("@tailwindcss/aspect-ratio"),
+  ],
 };

@@ -1,8 +1,23 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import Link from "next/link";
+import { useEffect, useRef, useState } from "react";
+import { classNames } from "../functions/classNames";
 
 const Home: NextPage = () => {
+  const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [featureImageHeight, setFeatureImageHeight] = useState(100);
+  const featureImage = useRef<HTMLImageElement | null>(null);
+
+  useEffect(() => {
+    const image = featureImage.current;
+    if (image) {
+      const { height } = image.getBoundingClientRect();
+      setFeatureImageHeight(height);
+    }
+  }, [featureImage]);
+
   return (
     <div>
       <Head>
@@ -11,40 +26,91 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <header className="flex justify-between items-end bg-white shadow-lg px-4 lg:px-14 lg:py-5">
-        <Image
-          alt="Faktory logo"
-          src="/images/faktory-gold.svg"
-          height="80px"
-          width="145px"
-        />
-        <nav className="flex gap-6 font-semibold text-medium-gray font-display text-lg uppercase">
+      <header className="sticky top-0 z-30 lg:relative flex justify-between items-end bg-white shadow-lg px-4 lg:px-14 py-2 lg:py-5">
+        <div className="w-24 lg:w-auto">
+          <Image
+            alt="Faktory logo"
+            src="/images/faktory-gold.svg"
+            height="80px"
+            width="145px"
+          />
+        </div>
+        <div className="absolute lg:hidden top-0 right-0 z-20">
+          <button
+            className="p-5"
+            onClick={() => {
+              setMobileNavOpen(!mobileNavOpen);
+            }}
+            type="button"
+          >
+            {mobileNavOpen ? (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            ) : (
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="h-8 w-8"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M4 6h16M4 12h16M4 18h16"
+                />
+              </svg>
+            )}
+          </button>
+        </div>
+        <nav
+          className={classNames(
+            `bg-dark-gray bg-opacity-95 z-10 items-center justify-center text-center fixed inset-0 gap-6 font-semibold text-light-gray font-display text-2xl uppercase transition-all duration-300`,
+            `lg:pt-0 lg:bg-transparent lg:relative lg:text-lg lg:flex lg:text-medium-gray`,
+            mobileNavOpen
+              ? `flex flex-col h-full pt-8 opacity-100`
+              : `h-0 lg:h-auto overflow-hidden opacity-0 lg:opacity-100`
+          )}
+        >
           <a
-            className="border-b-2 border-white hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Work
           </a>
           <a
-            className="border-b-2 border-white hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Case Studies
           </a>
           <a
-            className="border-b-2 border-white hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             What We Do
           </a>
           <a
-            className="border-b-2 border-white hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Who We Are
           </a>
           <a
-            className="border-b-2 border-white hover:border-b-gold hover:text-gold transition-all tracking-wide"
+            className="block lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
             href="#"
           >
             Contact
@@ -55,7 +121,7 @@ const Home: NextPage = () => {
       <main>
         <div className="bg-dark-gray">
           <div className="max-w-7xl mx-auto px-4 py-24 lg:py-36 text-white grid lg:grid-cols-2 items-end">
-            <h1 className="text-[180px] leading-[0.8] font-bold font-serif">
+            <h1 className="text-[20vw] lg:text-[180px] leading-[0.8] font-bold font-serif">
               <span className="block">Go</span>
               <span className="block">Beyond</span>
               <span className="block text-gold">Good</span>
@@ -69,16 +135,169 @@ const Home: NextPage = () => {
                   height="40px"
                 />
               </div>
-              <div className="uppercase font-display text-5xl leading-tight">
+              <div className="uppercase font-display text-[8vw] lg:text-5xl leading-tight">
                 Something about being a
                 <span className="block">full service agency maybe?</span>
               </div>
             </div>
           </div>
+          <div
+            className="max-w-7xl mx-auto px-4"
+            style={{
+              marginBottom: `${featureImageHeight / 2}px`,
+              maxHeight: `${featureImageHeight / 2}px`,
+            }}
+          >
+            <div
+              className="aspect-w-16 aspect-h-9"
+              ref={featureImage}
+              style={{
+                height: `${featureImageHeight}px`,
+              }}
+            >
+              <Image
+                src="/images/stock/christian-wiebel-kkjdOX5SIqA-unsplash.jpg"
+                alt="stock"
+                objectFit="cover"
+                layout="fill"
+              />
+            </div>
+          </div>
+        </div>
+        <div className="bg-near-white py-24">
+          <div className="max-w-7xl mx-auto px-4 flex items-center justify-center">
+            <Link href="/work">
+              <a className="orangeFillButton">View our recent work</a>
+            </Link>
+          </div>
+        </div>
+        <div className="bg-mint">
+          <div className="max-w-7xl mx-auto px-4 py-24 lg:py-36 text-white grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+              <div className="aspect-w-9 aspect-h-8">
+                <Image
+                  src="/images/stock/geio-tischler-UtilSW8zuZk-unsplash.jpg"
+                  alt="stock"
+                  objectFit="cover"
+                  layout="fill"
+                />
+              </div>
+            </div>
+            <div className="grid gap-y-4">
+              <h3 className="text-gold">
+                Headline about our extensive healthcare industry experience
+              </h3>
+              <p className="p2 text-dark-gray">
+                Pulling teeth we need distributors to evangelize the new line to
+                local markets we need distributors to evangelize the new line to
+                local markets, nor slipstream and wiggle room fire up your
+                browser. Push back. Five-year strategic plan bake it in but i do
+                not want to drain the whole swamp, i just want to shoot some
+                alligators.
+              </p>
+              <div className="mt-12">
+                <Link href="/work">
+                  <a className="standardButton">Learn More</a>
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="bg-near-white text-center">
+          <div className="max-w-7xl mx-auto px-4 py-24 lg:py-36 grid gap-16 items-center">
+            <h2>Snappy Headline Goes Here</h2>
+            <p>
+              Quick-win going forward, yet value-added, but a tentative event
+              rundown is attached for your reference, including other happenings
+              on the day you are most welcome to join us beforehand for a light
+              lunch we would also like to invite you to other activities on the
+              day
+            </p>
+            <div>
+              <Link href="/work">
+                <a className="standardButton">Learn More</a>
+              </Link>
+            </div>
+          </div>
         </div>
       </main>
 
-      <footer></footer>
+      <footer className="grid lg:grid-cols-3 gap-8 2xl:gap-24 gap-y-24 py-24 px-4 lg:px-14 text-medium-gray text-center lg:text-left bg-dark-gray">
+        <div className="grid lg:grid-cols-3 gap-8 2xl:gap-12 items-start text-sm">
+          <div className="lg:col-span-1">
+            <Image
+              alt="Faktory logo"
+              src="/images/faktory-gray.svg"
+              height="80px"
+              width="145px"
+            />
+          </div>
+          <div className="lg:col-span-2">
+            <p>
+              702 West Porter Lane
+              <br />
+              Centerville, UT 84014
+            </p>
+            <p>
+              <span className="italic">info@faktorymail.com</span>
+              <br />
+              Tel: 385.393.3357
+            </p>
+          </div>
+        </div>
+        <div className="text-center grid gap-12">
+          <div className="flex justify-around max-w-xs grid-cols-3 mx-auto gap-8">
+            <a href="https://www.facebook.com/FaktoryInc/">
+              <Image
+                src="/images/facebook.svg"
+                alt="Facebook logo"
+                width="40px"
+                height="40px"
+              />
+            </a>
+            <a href="https://www.instagram.com/faktory/">
+              <Image
+                src="/images/instagram.svg"
+                alt="Instagram logo"
+                width="40px"
+                height="40px"
+              />
+            </a>
+            <a href="https://www.linkedin.com/company/faktory-showroom/">
+              <Image
+                src="/images/linkedin.svg"
+                alt="LinkedIn logo"
+                width="40px"
+                height="40px"
+              />
+            </a>
+          </div>
+          <p className="text-sm">
+            &copy; {new Date().getFullYear()} Faktory, Inc. All Rights Reserved.
+          </p>
+        </div>
+        <div className="mx-auto w-full flex justify-around items-start max-w-sm font-semibold tracking-wider uppercase font-display">
+          <div className="grid gap-y-4 items-start">
+            <Link href="/work">
+              <a className="block">Work</a>
+            </Link>
+            <Link href="/work">
+              <a className="block">Case Studies</a>
+            </Link>
+            <Link href="/work">
+              <a className="block">What We Do</a>
+            </Link>
+          </div>
+          <div className="grid gap-y-4 items-start">
+            <Link href="/work">
+              <a className="block">Who We Are</a>
+            </Link>
+            <Link href="/work">
+              <a className="block">Contact</a>
+            </Link>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
