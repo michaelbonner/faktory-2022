@@ -22,7 +22,14 @@ const Home: NextPage = () => {
       description="Faktory is an integrated, full-service advertising agency in Utah with serious branding and creative chops. Our services include advertising, digital, media buying, PR, web design, event management and more."
     >
       <div>
-        <div className="bg-dark-gray">
+        <div
+          className="bg-dark-gray"
+          style={{
+            backgroundImage: `url("/images/texture.svg")`,
+            backgroundRepeat: "no-repeat",
+            backgroundSize: "cover",
+          }}
+        >
           <div className="max-w-7xl mx-auto px-4 py-24 lg:py-36 text-white grid lg:grid-cols-2 items-end">
             <h1 className="text-[20vw] lg:text-[160px] 2xl:text-[200px] leading-[0.8] font-bold font-serif">
               <span className="block">Go</span>
