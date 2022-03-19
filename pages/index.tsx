@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       <div>
         <div className="bg-dark-gray">
           <div className="max-w-7xl mx-auto px-4 py-24 lg:py-36 text-white grid lg:grid-cols-2 items-end">
-            <h1 className="text-[20vw] lg:text-[180px] leading-[0.8] font-bold font-serif">
+            <h1 className="text-[20vw] lg:text-[160px] 2xl:text-[200px] leading-[0.8] font-bold font-serif">
               <span className="block">Go</span>
               <span className="block">Beyond</span>
               <span className="block text-gold">Good</span>
@@ -38,7 +38,7 @@ const Home: NextPage = () => {
                   height="40px"
                 />
               </div>
-              <div className="uppercase font-display text-[8vw] lg:text-5xl leading-tight">
+              <div className="uppercase font-display text-[40px] 2xl:text-[50px] lg:text-5xl leading-tight">
                 Something about being a
                 <span className="block">full service agency maybe?</span>
               </div>
