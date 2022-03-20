@@ -131,36 +131,31 @@ const Layout: FC<Props> = ({
                 : `-top-[100vh] lg:top-0 h-0 lg:h-auto overflow-hidden opacity-0 lg:opacity-100`
             )}
           >
-            <a
-              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-              href="/work"
-            >
-              Work
-            </a>
-            <a
-              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-              href="/case-studies"
-            >
-              Case Studies
-            </a>
-            <a
-              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-              href="/what-we-do"
-            >
-              What We Do
-            </a>
-            <a
-              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-              href="/who-we-are"
-            >
-              Who We Are
-            </a>
-            <a
-              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-              href="/contact"
-            >
-              Contact
-            </a>
+            <Link href="/work">
+              <a className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide">
+                Work
+              </a>
+            </Link>
+            <Link href="/case-studies">
+              <a className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide">
+                Case Studies
+              </a>
+            </Link>
+            <Link href="/what-we-do">
+              <a className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide">
+                What We Do
+              </a>
+            </Link>
+            <Link href="/who-we-are">
+              <a className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide">
+                Who We Are
+              </a>
+            </Link>
+            <Link href="/contact">
+              <a className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide">
+                Contact
+              </a>
+            </Link>
           </nav>
         </Transition>
       </header>
