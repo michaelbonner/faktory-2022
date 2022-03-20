@@ -48,6 +48,12 @@ p {
   @apply border border-orange text-orange text-xl font-bold font-serif pt-4 pb-3 px-20 hover:bg-orange hover:text-white transition-all;
 }
 
+.whiteTransparentButton {
+  @apply block text-center;
+  @apply lg:inline-block;
+  @apply border border-white text-white text-xl font-bold font-serif pt-4 pb-3 px-20 hover:bg-orange hover:text-white transition-all;
+}
+
 .orangeFillButton {
   @apply block text-center;
   @apply lg:inline-block;

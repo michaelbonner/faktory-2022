@@ -1,4 +1,3 @@
-import { Transition } from "@headlessui/react";
 import type { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -33,42 +32,9 @@ const Home: NextPage = () => {
         >
           <div className="max-w-7xl mx-auto px-4 py-24 lg:py-36 text-white grid lg:grid-cols-2 items-end">
             <h1 className="text-[20vw] lg:text-[160px] 2xl:text-[200px] leading-[0.8] font-bold font-serif">
-              <Transition
-                appear={true}
-                show={true}
-                enter="relative transition-all duration-700"
-                enterFrom="opacity-0 -bottom-2"
-                enterTo="opacity-100 bottom-0"
-                leave="transition-opacity duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <span className="block">Go</span>
-              </Transition>
-              <Transition
-                appear={true}
-                show={true}
-                enter="relative transition-all duration-[900ms]"
-                enterFrom="opacity-0 -bottom-2"
-                enterTo="opacity-100 bottom-0"
-                leave="transition-opacity duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <span className="block">Beyond</span>
-              </Transition>
-              <Transition
-                appear={true}
-                show={true}
-                enter="relative transition-all duration-[1100ms]"
-                enterFrom="opacity-0 -bottom-2"
-                enterTo="opacity-100 bottom-0"
-                leave="transition-opacity duration-200"
-                leaveFrom="opacity-100"
-                leaveTo="opacity-0"
-              >
-                <span className="block text-gold">Good</span>
-              </Transition>
+              <span className="block">Go</span>
+              <span className="block">Beyond</span>
+              <span className="block text-gold">Good</span>
             </h1>
             <div className="grid gap-y-24 justify-end">
               <div className="flex justify-end">

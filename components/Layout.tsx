@@ -1,7 +1,8 @@
+import { Transition } from "@headlessui/react";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import { FC, useEffect, useRef, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { classNames } from "../functions/classNames";
 
 type Props = {
@@ -48,12 +49,27 @@ const Layout: FC<Props> = ({
 
       <header className="sticky top-0 z-30 lg:relative flex justify-between items-end bg-white shadow-lg px-4 lg:px-14 py-2 lg:py-5">
         <div className="w-24 lg:w-auto">
-          <Image
-            alt="Faktory logo"
-            src="/images/faktory-gold.svg"
-            height="80px"
-            width="145px"
-          />
+          <Transition
+            appear={true}
+            show={true}
+            enter="relative transition-all duration-500"
+            enterFrom="opacity-0 -bottom-2"
+            enterTo="opacity-100 bottom-0"
+            leave="transition-opacity duration-200"
+            leaveFrom="opacity-100"
+            leaveTo="opacity-0"
+          >
+            <Link href="/">
+              <a>
+                <Image
+                  alt="Faktory logo"
+                  src="/images/faktory-gold.svg"
+                  height="80px"
+                  width="145px"
+                />
+              </a>
+            </Link>
+          </Transition>
         </div>
         <div className="absolute lg:hidden top-0 right-0 z-20">
           <button
@@ -96,60 +112,73 @@ const Layout: FC<Props> = ({
             )}
           </button>
         </div>
-        <nav
-          className={classNames(
-            `bg-dark-gray bg-opacity-95 z-10 items-center justify-center text-center fixed inset-0 gap-6 font-medium text-light-gray font-display text-3xl lg:text-xl uppercase transition-all duration-300`,
-            `lg:pt-0 lg:bg-transparent lg:relative lg:text-lg lg:flex lg:text-medium-gray`,
-            mobileNavOpen
-              ? `flex flex-col h-full pt-8 opacity-100`
-              : `h-0 lg:h-auto overflow-hidden opacity-0 lg:opacity-100`
-          )}
+        <Transition
+          appear={true}
+          show={true}
+          enter="relative transition-all duration-500"
+          enterFrom="opacity-0 -bottom-2"
+          enterTo="opacity-100 bottom-0"
+          leave="transition-opacity duration-200"
+          leaveFrom="opacity-100"
+          leaveTo="opacity-0"
         >
-          <a
-            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-            href="#"
+          <nav
+            className={classNames(
+              `bg-dark-gray bg-opacity-95 z-10 items-center justify-center text-center fixed inset-0 gap-6 font-medium text-light-gray font-display text-3xl lg:text-xl uppercase transition-all duration-300`,
+              `lg:pt-0 lg:bg-transparent lg:relative lg:text-lg lg:flex lg:text-medium-gray`,
+              mobileNavOpen
+                ? `top-0 flex flex-col h-full pt-8 opacity-100`
+                : `-top-[100vh] lg:top-0 h-0 lg:h-auto overflow-hidden opacity-0 lg:opacity-100`
+            )}
           >
-            Work
-          </a>
-          <a
-            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-            href="#"
-          >
-            Case Studies
-          </a>
-          <a
-            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-            href="#"
-          >
-            What We Do
-          </a>
-          <a
-            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-            href="#"
-          >
-            Who We Are
-          </a>
-          <a
-            className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
-            href="#"
-          >
-            Contact
-          </a>
-        </nav>
+            <a
+              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+              href="/work"
+            >
+              Work
+            </a>
+            <a
+              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+              href="/case-studies"
+            >
+              Case Studies
+            </a>
+            <a
+              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+              href="/what-we-do"
+            >
+              What We Do
+            </a>
+            <a
+              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+              href="/who-we-are"
+            >
+              Who We Are
+            </a>
+            <a
+              className="block py-4 lg:py-0 px-1 lg:inline-block border-t lg:border-t-0 border-b-2 border-transparent hover:border-b-gold hover:text-gold transition-all tracking-wide"
+              href="/contact"
+            >
+              Contact
+            </a>
+          </nav>
+        </Transition>
       </header>
 
       <main>{children}</main>
 
       <footer className="grid lg:grid-cols-3 gap-8 2xl:gap-24 gap-y-24 py-24 px-4 lg:px-14 text-medium-gray text-center lg:text-left bg-dark-gray">
         <div className="grid lg:grid-cols-3 gap-8 2xl:gap-12 items-start text-sm">
-          <div className="lg:col-span-1">
-            <Image
-              alt="Faktory logo"
-              src="/images/faktory-gray.svg"
-              height="80px"
-              width="145px"
-            />
-          </div>
+          <Link href="/">
+            <a className="lg:col-span-1">
+              <Image
+                alt="Faktory logo"
+                src="/images/faktory-gray.svg"
+                height="80px"
+                width="145px"
+              />
+            </a>
+          </Link>
           <div className="lg:col-span-2">
             <p>
               702 West Porter Lane
