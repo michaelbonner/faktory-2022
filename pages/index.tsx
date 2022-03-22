@@ -26,9 +26,9 @@ const Home: NextPage = () => {
         <div
           className="bg-dark-gray"
           style={{
-            backgroundImage: `url("/images/texture.svg")`,
-            backgroundRepeat: "no-repeat",
-            backgroundSize: "cover",
+            backgroundImage: `url("/images/texture-white.svg")`,
+            backgroundRepeat: `no-repeat`,
+            backgroundSize: `cover`,
           }}
         >
           <div className="max-w-7xl mx-auto px-4 py-24 lg:py-36 text-white grid lg:grid-cols-2 items-end">
